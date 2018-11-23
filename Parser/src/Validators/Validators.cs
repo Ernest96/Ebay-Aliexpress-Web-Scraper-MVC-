@@ -66,11 +66,6 @@ namespace Parser.Validators
                     item.description = "No description...";
                 }
 
-                if (item.description.Length > 4096)
-                {
-                    ErrorsResult.Add("item description is too long (4096 max)");
-                    return ErrorsResult;
-                }
 
                 if (Successor != null)
                 {
@@ -110,7 +105,7 @@ namespace Parser.Validators
         {
             public override List<string> HandleValidation(Item item)
             {
-                if (item.price.Length >= 16)
+                if (item.price.Length > 32)
                 {
                     ErrorsResult.Add("item price is too long (16 max)");
                     return ErrorsResult;
